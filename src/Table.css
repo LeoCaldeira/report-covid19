@@ -1,0 +1,48 @@
+.search-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    background-color: palegoldenrod;
+
+    font-size: 19px;
+}
+
+.city-search{
+    width: 60%;
+    height: 100px;
+    
+
+    background-color: orange;
+
+    border-radius: 10px;
+}
+
+.case-status{
+    display: flex;
+    width: 60%;
+
+    justify-content: space-between;
+
+    margin: 10px 0 0 0;
+
+}
+
+.case-type{
+    background-color: papayawhip;
+
+    margin:0 5px 0 5px;
+
+    border-radius: 10px;
+
+    width: 100%;
+    height: 70px;
+
+    padding: 5px;
+}
+
+. {
+
+}
