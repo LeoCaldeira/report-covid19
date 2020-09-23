@@ -1,11 +1,11 @@
+
+
 .search-table{
     display: flex;
     align-items: center;
     justify-content: center;
 
     flex-direction: column;
-
-    background-color: palegoldenrod;
 
     font-size: 19px;
 }
@@ -20,6 +20,20 @@
     border-radius: 10px;
 }
 
+.city-search input{
+    
+    height: 60px;  
+  
+    width: 90%;
+}
+
+.city-search input:focus {
+    background-color: rgba(240, 255, 158, 0.233);
+    border-radius: 10px;
+    height: 60px;
+    width: 90%;
+}
+
 .case-status{
     display: flex;
     width: 60%;
@@ -28,6 +42,26 @@
 
     margin: 10px 0 0 0;
 
+}
+.case-status span{
+    cursor: default;
+}
+
+.case-status input {
+    width: 98%;
+    height: 55%;
+    
+    font-size: 28px;
+    margin-left: 10px;
+
+    cursor: default;
+    
+}
+
+.case-status input:focus{
+    font-size: 28px;
+
+    background-color: none;
 }
 
 .case-type{
@@ -43,6 +77,30 @@
     padding: 5px;
 }
 
-. {
+.align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.send-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 10px;
+
+    cursor: pointer;
+    
+    border: none;
+    border-radius: 10px;
+
+    margin-left: 10px;
+}
+
+.send-icon:focus{
+    outline: none;
 }
