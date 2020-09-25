@@ -47,16 +47,6 @@
     cursor: default;
 }
 
-.case-status input {
-    width: 98%;
-    height: 55%;
-    
-    font-size: 28px;
-    margin-left: 10px;
-
-    cursor: default;
-    
-}
 
 .case-status input:focus{
     font-size: 28px;
@@ -103,4 +93,11 @@
 
 .send-icon:focus{
     outline: none;
+}
+
+.results {
+    cursor: default;
+    
+    font-size: 28px;
+    margin-left: 10px;
 }

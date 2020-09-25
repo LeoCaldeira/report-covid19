@@ -3,6 +3,7 @@ import { FaUserNurse } from 'react-icons/fa';
 import './App.css';
 import './Table.css';
 import './Navbar.css';
+import { logRoles } from '@testing-library/react';
 
 /* onChange={(e) => setInputValue(e.target.value)} FAZ COM QUE SEJA MOSTRADO AS LETRAS SENDO ATUALIZADAS NO INPUT */
 
@@ -13,20 +14,33 @@ function App() {
   const [suspectCases, setSuspectCases] = useState("832.123")
   const [recoveredCases, setRecoveredcases] = useState("569.325")
   const [numberDeath, setNumberDeath] = useState("102.985")
-  const [response, setResponse] = useState("");
-
-
+  const [covid, setCovid] = useState("");
+  
 
   const getStateFromAPI = async () => {
-    let response = await fetch ("https://covid19-brazil-api.now.sh/api/report/v1");
-    response = await response.json();
+    let response = await fetch("https://covid19-brazil-api.now.sh/api/report/v1");
+        response = await response.json();
+  /* 
+    let variavel = {name: "logRoles", livro="mlktasd"], [name= "aslkdajklsd", livru="eqwuiewoiuoqiwe"]}
+    setCovid(response); */
+
+    setCovid(response);
+    
+    const verifyState = () => {
+
+        if (response.data[num].state === enterCity);
+    }
+    // setConfirmedCases(response.data[num].cases);
+    // setSuspectCases(response.dara[num].sus)
   
-    console.log(response);
+    console.log(response.data);
+
+    //teste
+
   }
 
   
   
-
   const onCLickCity = () => {
     setCityName("");
   };
@@ -62,22 +76,30 @@ function App() {
           <div className="case-status">
             <div className="case-type">
               <span>Confirmados:</span><br/>
-              <input className="" readOnly={true} value={confirmedCases} />
+              <div className="results">
+                {confirmedCases}
+              </div>
             </div>
             <div className="case-type">
-            <span>suspeitos:</span><br/>
-              <input className=" " readOnly={true} value={suspectCases} />
+              <span>suspeitos:</span><br/>
+              <div className="results">
+                {suspectCases}
+              </div>
             </div>
           </div>
 
           <div className="case-status">
             <div className="case-type">
-            <span>Confirmados:</span><br/>
-              <input className=" " readOnly={true} value={recoveredCases} />
+            <span>Recuperados:</span><br/>
+              <div className="results">
+                {recoveredCases}
+              </div>
             </div>
             <div className="case-type">
-            <span>suspeitos:</span><br/>
-              <input className=" " readOnly={true} value={numberDeath} />
+            <span>Mortes:</span><br/>
+              <div className="results">
+                {numberDeath}
+              </div>
             </div>
           </div>
       </div>
