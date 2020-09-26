@@ -7,9 +7,13 @@
 
 
 .logo{
+    margin: 20px 0 0 20px;
+    
     background-image: url("./assets/logo.jpg");
     background-size: 100px;
     background-repeat: no-repeat;
+
+    border-radius: 50%;
     
     width: 100px;
     height: 100px;

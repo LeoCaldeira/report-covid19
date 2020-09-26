@@ -9,10 +9,10 @@ import './Navbar.css';
 function App() {
   
   const [cityName, setCityName] = useState(" Nome da Cidade");
-  const [confirmedCases, setConfirmedCases] = useState("958.651")
-  const [suspectCases, setSuspectCases] = useState("832.123")
-  const [recoveredCases, setRecoveredCases] = useState("569.325")
-  const [numberDeath, setNumberOfDeath] = useState("102.985")
+  const [confirmedCases, setConfirmedCases] = useState(" ")
+  const [suspectCases, setSuspectCases] = useState(" ")
+  const [recoveredCases, setRecoveredCases] = useState(" ")
+  const [numberDeath, setNumberOfDeath] = useState(" ")
   const [covid, setCovid] = useState("");
   
 
@@ -68,7 +68,7 @@ function App() {
         </div>
       </div>
 
-      <h1 style={{textAlign: "center"}}>Evolução Coronavírus (COVID-19)</h1>
+      <h1 className="tittle">Evolução Coronavírus (COVID-19)</h1>
 
       <div className="search-table">
         <div className="city-search">
@@ -86,13 +86,13 @@ function App() {
 
           <div className="case-status">
             <div className="case-type">
-              <span>Confirmados:</span><br/>
+            <span>Negados (ultimas 24 hrs):</span><br/>
               <div className="results">
-                {confirmedCases}
+                {recoveredCases}
               </div>
             </div>
             <div className="case-type">
-              <span>Suspeitos:</span><br/>
+              <span>Suspeitos (ultimas 24 hrs):</span><br/>
               <div className="results">
                 {suspectCases}
               </div>
@@ -100,13 +100,13 @@ function App() {
           </div>
 
           <div className="case-status">
-            <div className="case-type">
-            <span>Negados:</span><br/>
+            <div className="case-type" style={{backgroundColor: "lightGreen"}}>
+              <span>Confirmados:</span><br/>
               <div className="results">
-                {recoveredCases}
+                {confirmedCases}
               </div>
             </div>
-            <div className="case-type">
+            <div className="case-type" style={{backgroundColor: "gray", color: "white"}}>
             <span>Mortes:</span><br/>
               <div className="results">
                 {numberDeath}
