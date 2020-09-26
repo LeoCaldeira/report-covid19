@@ -3,7 +3,6 @@ import { FaUserNurse } from 'react-icons/fa';
 import './App.css';
 import './Table.css';
 import './Navbar.css';
-import './catchState.js';
 
 /* onChange={(e) => setInputValue(e.target.value)} FAZ COM QUE SEJA MOSTRADO AS LETRAS SENDO ATUALIZADAS NO INPUT */
 
@@ -45,7 +44,6 @@ function App() {
     let sizeObject = response.data.length;
     let num = 0;
     let valida = '';
-    let verify = 0;
 
 
     for (num=0; num < sizeObject; num++){
@@ -76,7 +74,7 @@ function App() {
     <div className="App">
       
       <div className="nav-bar">  
-        <a href="./public/index.html" className="logo" />
+      
         <div style={{display: "flex", marginRight:"3%"}}>  
           <div className="options">Como se<br />proteger ?</div>
           <div className="options">Grupo <br />de risco</div>
