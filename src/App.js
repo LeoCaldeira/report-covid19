@@ -3,7 +3,6 @@ import { FaUserNurse } from 'react-icons/fa';
 import './App.css';
 import './Table.css';
 import './Navbar.css';
-import { logRoles } from '@testing-library/react';
 
 /* onChange={(e) => setInputValue(e.target.value)} FAZ COM QUE SEJA MOSTRADO AS LETRAS SENDO ATUALIZADAS NO INPUT */
 
@@ -12,33 +11,45 @@ function App() {
   const [cityName, setCityName] = useState(" Nome da Cidade");
   const [confirmedCases, setConfirmedCases] = useState("958.651")
   const [suspectCases, setSuspectCases] = useState("832.123")
-  const [recoveredCases, setRecoveredcases] = useState("569.325")
-  const [numberDeath, setNumberDeath] = useState("102.985")
+  const [recoveredCases, setRecoveredCases] = useState("569.325")
+  const [numberDeath, setNumberOfDeath] = useState("102.985")
   const [covid, setCovid] = useState("");
   
 
   const getStateFromAPI = async () => {
     let response = await fetch("https://covid19-brazil-api.now.sh/api/report/v1");
         response = await response.json();
-  /* 
-    let variavel = {name: "logRoles", livro="mlktasd"], [name= "aslkdajklsd", livru="eqwuiewoiuoqiwe"]}
-    setCovid(response); */
-
+ 
     setCovid(response);
     
-    const verifyState = () => {
-
-        if (response.data[num].state === enterCity);
-    }
-    // setConfirmedCases(response.data[num].cases);
-    // setSuspectCases(response.dara[num].sus)
-  
-    console.log(response.data);
-
+    let parametro = response
+    verifyState(parametro);
     //teste
 
   }
 
+  const verifyState = (response) => {
+    let sizeObject = response.data.length;
+    let num = 0;
+    let valida = '';
+
+    for (num=0; num < sizeObject; num++){
+      valida = response.data[num].state;
+
+      if (valida == cityName){      
+        setConfirmedCases(response.data[num].cases);
+        setSuspectCases(response.data[num].suspects);
+        setRecoveredCases(response.data[num].refuses);
+        setNumberOfDeath(response.data[num].deaths);
+
+      }
+    }
+      
+  }
+
+  /* function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  } */
   
   
   const onCLickCity = () => {
@@ -72,7 +83,7 @@ function App() {
             </div>
           </div>
         </div>
-  
+
           <div className="case-status">
             <div className="case-type">
               <span>Confirmados:</span><br/>
@@ -81,7 +92,7 @@ function App() {
               </div>
             </div>
             <div className="case-type">
-              <span>suspeitos:</span><br/>
+              <span>Suspeitos:</span><br/>
               <div className="results">
                 {suspectCases}
               </div>
@@ -90,7 +101,7 @@ function App() {
 
           <div className="case-status">
             <div className="case-type">
-            <span>Recuperados:</span><br/>
+            <span>Negados:</span><br/>
               <div className="results">
                 {recoveredCases}
               </div>
