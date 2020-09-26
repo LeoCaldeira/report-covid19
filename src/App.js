@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaUserNurse } from 'react-icons/fa';
 import './App.css';
 import './Table.css';
 import './Navbar.css';
+import './catchState.js';
 
 /* onChange={(e) => setInputValue(e.target.value)} FAZ COM QUE SEJA MOSTRADO AS LETRAS SENDO ATUALIZADAS NO INPUT */
 
 function App() {
   
-  const [cityName, setCityName] = useState(" Nome da Cidade");
+  const [stateName, setStateName] = useState(" Nome do ESTADO");
   const [confirmedCases, setConfirmedCases] = useState(" ")
   const [suspectCases, setSuspectCases] = useState(" ")
   const [recoveredCases, setRecoveredCases] = useState(" ")
   const [numberDeath, setNumberOfDeath] = useState(" ")
-  const [covid, setCovid] = useState("");
   
 
   const getStateFromAPI = async () => {
     let response = await fetch("https://covid19-brazil-api.now.sh/api/report/v1");
         response = await response.json();
- 
-    setCovid(response);
     
     let parametro = response
     verifyState(parametro);
@@ -28,20 +26,38 @@ function App() {
 
   }
 
+  function stateCatch () {
+    const ufSelect = document.querySelector("select[name=estados]")
+    let i = 0;
+    
+    fetch("https://covid19-brazil-api.now.sh/api/report/v1")
+    .then( res => res.json() )
+    .then( states => {
+
+      for (i=0; i<27; i++)  
+        for (const estado of states){
+          ufSelect.innerHTML += `<option value="${estado.data[i].states}">${estado.data[i].states}</option>`
+        }
+    })
+  }
+
   const verifyState = (response) => {
     let sizeObject = response.data.length;
     let num = 0;
     let valida = '';
+    let verify = 0;
+
 
     for (num=0; num < sizeObject; num++){
       valida = response.data[num].state;
 
-      if (valida == cityName){      
+      if (valida === stateName){      
         setConfirmedCases(response.data[num].cases);
         setSuspectCases(response.data[num].suspects);
         setRecoveredCases(response.data[num].refuses);
         setNumberOfDeath(response.data[num].deaths);
 
+        break;
       }
     }
       
@@ -53,7 +69,7 @@ function App() {
   
   
   const onCLickCity = () => {
-    setCityName("");
+    setStateName("");
   };
 
   return (
@@ -75,9 +91,13 @@ function App() {
           <div style={{margin: "7px", cursor: "default"}}>
             Estado:<br/>
             <div className="align-center" >
-              <input style={{fontSize: "30px"}} value={cityName} onFocus={onCLickCity} onChange={(e) => setCityName(e.target.value)}/>
+
+              <input style={{fontSize: "30px"}} value={stateName} onFocus={onCLickCity} onChange={(e) => setStateName(e.target.value)}/>
+              {/* <select name="estados" onClick={stateCatch()} className="enterState" >
+                <option value={stateName}>{stateName}</option>
+              </select> */}
               <button className="send-icon" onClick={getStateFromAPI}>
-                <FaUserNurse color="#000" size="40px"/>
+                <FaUserNurse color="#000" size="40px" />
               </button>
 
             </div>
@@ -119,3 +139,7 @@ function App() {
 }
 
 export default App;
+
+
+
+// react auto complete

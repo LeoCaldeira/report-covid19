@@ -77,6 +77,27 @@
     justify-content: center;
     align-items: center;
 }
+.enterState{
+    margin-top: 10px;
+    padding-left: 15px;
+
+    border-radius: 10px;
+    border: 1px solid white; 
+
+    width: 93%;
+    height: 40px;
+
+    font-size: 28px;
+    background-color: rgba(185, 185, 185, 0.74);
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.enterState:focus{
+    outline: none;
+}
 
 .send-icon {
     width: 40px;
@@ -87,6 +108,7 @@
     justify-content: center;
 
     margin-left: 10px;
+    margin-top: 10px;
 
     cursor: pointer;
     
