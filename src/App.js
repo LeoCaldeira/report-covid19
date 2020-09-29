@@ -24,21 +24,6 @@ function App() {
     //teste
 
   }
-/* 
-  function stateCatch () {
-    const ufSelect = document.querySelector("select[name=estados]")
-    let i = 0;
-    
-    fetch("https://covid19-brazil-api.now.sh/api/report/v1")
-    .then( res => res.json() )
-    .then( states => {
-
-      for (i=0; i<27; i++)  
-        for (const estado of states){
-          ufSelect.innerHTML += `<option value="${estado.data[i].states}">${estado.data[i].states}</option>`
-        }
-    })
-  } */
 
   function sendText (e){
     if (e.keyCode === 13){
