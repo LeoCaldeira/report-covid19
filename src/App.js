@@ -24,7 +24,7 @@ function App() {
     //teste
 
   }
-
+/* 
   function stateCatch () {
     const ufSelect = document.querySelector("select[name=estados]")
     let i = 0;
@@ -38,6 +38,12 @@ function App() {
           ufSelect.innerHTML += `<option value="${estado.data[i].states}">${estado.data[i].states}</option>`
         }
     })
+  } */
+
+  function sendText (e){
+    if (e.keyCode === 13){
+      getStateFromAPI(stateName);
+       }
   }
 
   const verifyState = (response) => {
@@ -49,7 +55,7 @@ function App() {
     for (num=0; num < sizeObject; num++){
       valida = response.data[num].state;
 
-      if (valida === stateName){      
+      if (valida.toLowerCase() === stateName.toLowerCase()){      
         setConfirmedCases(response.data[num].cases);
         setSuspectCases(response.data[num].suspects);
         setRecoveredCases(response.data[num].refuses);
@@ -75,6 +81,7 @@ function App() {
       
       <div className="nav-bar">  
       
+
         <div style={{display: "flex", marginRight:"3%"}}>  
           <div className="options">Como se<br />proteger ?</div>
           <div className="options">Grupo <br />de risco</div>
@@ -90,7 +97,7 @@ function App() {
             Estado:<br/>
             <div className="align-center" >
 
-              <input style={{fontSize: "30px"}} value={stateName} onFocus={onCLickCity} onChange={(e) => setStateName(e.target.value)}/>
+              <input style={{fontSize: "30px"}} value={stateName} onKeyUp={sendText} onFocus={onCLickCity} onChange={(e) => setStateName(e.target.value)}/>
               {/* <select name="estados" onClick={stateCatch()} className="enterState" >
                 <option value={stateName}>{stateName}</option>
               </select> */}
